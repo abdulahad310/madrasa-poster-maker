@@ -3,39 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>বিদায়ী ব্যাচ ব্যানার মেকার</title>
+<title>মাদ্রাসা দারুস সুন্নাহ — বিদায়ী ব্যাচ কার্ড</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--green:#075c2b;--deep:#03451f;--lime:#7dbd24;--gold:#e7c34a;--ink:#173b25}
-*{box-sizing:border-box}body{margin:0;background:#f2f5f1;color:#17251c;font-family:"Noto Sans Bengali",sans-serif}
-header{background:var(--deep);color:white;padding:18px 16px;text-align:center}
-header h1{font-size:22px;margin:0 0 4px}header p{margin:0;font-size:13px;color:#e3f2e7}
-main{max-width:1100px;margin:20px auto;padding:0 14px;display:grid;grid-template-columns:minmax(280px,360px) minmax(0,1fr);gap:18px;align-items:start}
-.panel{background:white;border:1px solid #dce6dc;border-radius:14px;padding:16px;box-shadow:0 5px 18px #12351a0d}
-.panel h2{font-size:18px;margin:0 0 12px;color:var(--deep)}
+:root{--green:#07572d;--deep:#043e22;--mid:#0b7540;--gold:#cba64a;--paper:#fffdf7;--muted:#eaf1e8;--ink:#183b28}
+*{box-sizing:border-box}
+body{margin:0;background:#edf1ec;color:#1e3025;font-family:"Noto Sans Bengali",sans-serif}
+.topbar{background:linear-gradient(110deg,#043e22,#08703a);color:#fff;padding:17px 16px;text-align:center}
+.topbar h1{font-size:21px;margin:0 0 3px;font-weight:800}
+.topbar p{font-size:12px;margin:0;color:#e2eee4}
+main{max-width:1120px;margin:22px auto;padding:0 14px;display:grid;grid-template-columns:340px minmax(0,1fr);gap:18px;align-items:start}
+.panel{background:#fff;border:1px solid #dce5dc;border-radius:16px;padding:17px;box-shadow:0 8px 28px #163a2010}
+.panel h2{font-size:18px;color:var(--green);margin:0 0 13px}
 label{display:block;font-size:13px;font-weight:700;margin:12px 0 5px}
-input{width:100%;padding:10px 11px;border:1px solid #cbd8ce;border-radius:8px;font:inherit;font-size:14px;background:#fff}
+input{width:100%;padding:10px 11px;border:1px solid #ccd8ce;border-radius:9px;font:inherit;font-size:14px;background:#fff}
+input:focus{outline:2px solid #b7d2bb;border-color:#43865b}
 input[type=file]{padding:8px;font-size:12px}
-small{display:block;color:#68766b;font-size:11px;margin-top:4px}
-.actions{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
-button{border:0;border-radius:9px;padding:11px 14px;font:700 14px "Noto Sans Bengali",sans-serif;cursor:pointer}
-.primary{background:var(--green);color:#fff;flex:1}.secondary{background:#e8f1e9;color:var(--deep)}
-.preview-wrap{background:#e6ece7;border-radius:12px;padding:12px}
-canvas{display:block;width:100%;height:auto;aspect-ratio:4/5;background:#fff;border-radius:5px;box-shadow:0 5px 18px #17251c25}
-.note{font-size:12px;color:#627066;line-height:1.7;margin:12px 2px 0}
-@media(max-width:760px){main{grid-template-columns:1fr}.preview-panel{order:-1}header h1{font-size:19px}}
+small{display:block;color:#718075;font-size:11px;margin-top:4px}
+.actions{display:flex;gap:9px;margin-top:17px}
+button{border:0;border-radius:9px;padding:11px 13px;font:700 14px "Noto Sans Bengali",sans-serif;cursor:pointer}
+.primary{background:var(--green);color:#fff;flex:1}.secondary{background:#edf3ed;color:var(--green)}
+.preview-wrap{background:#e9eee9;border-radius:13px;padding:12px}
+canvas{display:block;width:100%;height:auto;aspect-ratio:4/5;background:#fffdf7;border-radius:6px;box-shadow:0 8px 24px #132c1b22}
+.note{font-size:12px;line-height:1.75;color:#647268;margin:13px 2px 0}
+@media(max-width:800px){main{grid-template-columns:1fr}.preview-panel{order:-1}}
 </style>
 </head>
 <body>
-<header>
+<header class="topbar">
   <h1>বিদায়ী ব্যাচ ব্যানার মেকার</h1>
-  <p>তথ্য পূরণ করুন, প্রিভিউ দেখুন এবং ৪:৫ অনুপাতে PNG ডাউনলোড করুন</p>
+  <p>তথ্য সম্পাদনা করুন · প্রিভিউ দেখুন · উচ্চমানের PNG ডাউনলোড করুন</p>
 </header>
 <main>
   <section class="panel">
-    <h2>শিক্ষার্থীর তথ্য</h2>
+    <h2>শিক্ষার্থীর পরিচিতি</h2>
     <label for="studentName">নাম</label><input id="studentName" value="মোঃ আব্দুল আহাদ">
     <label for="fatherName">পিতার নাম</label><input id="fatherName" value="মোঃ মাসুদ রানা">
     <label for="village">গ্রাম</label><input id="village" value="মুন্সীগঞ্জড়া">
@@ -43,117 +46,131 @@ canvas{display:block;width:100%;height:auto;aspect-ratio:4/5;background:#fff;bor
     <label for="district">জেলা</label><input id="district" value="চাঁপাইনবাবগঞ্জ">
     <label for="phone">মোবাইল নম্বর</label><input id="phone" value="01762062310" inputmode="tel">
     <label for="studentPhoto">শিক্ষার্থীর ছবি</label><input id="studentPhoto" type="file" accept="image/*">
-    <small>সামনের দিক থেকে তোলা পরিষ্কার পাসপোর্ট সাইজ ছবি ব্যবহার করুন।</small>
+    <small>পরিষ্কার, সামনে থেকে তোলা ছবি দিলে ফলাফল আরও সুন্দর হবে।</small>
     <div class="actions">
       <button class="primary" id="downloadBtn">PNG ডাউনলোড</button>
-      <button class="secondary" id="resetBtn" type="button">ডিফল্ট তথ্য</button>
+      <button class="secondary" id="resetBtn" type="button">রিসেট</button>
     </div>
-    <p class="note">মাদ্রাসার নাম, ঠিকানা, লোগো ও ভবনের ছবি স্থায়ীভাবে সেট করা আছে—এগুলো পরিবর্তনের কোনো অপশন নেই। শুধু পরিচিতির তথ্য ও শিক্ষার্থীর ছবি পরিবর্তন করতে পারবেন।</p>
+    <p class="note">মাদ্রাসার নাম, ঠিকানা, লোগো ও ভবনের ছবি স্থায়ী। এগুলো পরিবর্তনের কোনো অপশন নেই। শুধু শিক্ষার্থীর পরিচিতির তথ্য ও ছবি পরিবর্তন করা যাবে।</p>
   </section>
   <section class="panel preview-panel">
-    <h2>ব্যানারের প্রিভিউ <small style="display:inline;font-weight:400">(৪:৫ — ১০৮০ × ১৩৫০ px)</small></h2>
+    <h2>ব্যানারের প্রিভিউ <small style="display:inline;font-weight:400">(৪:৫ · ১০৮০ × ১৩৫০ px)</small></h2>
     <div class="preview-wrap"><canvas id="poster" width="1080" height="1350"></canvas></div>
   </section>
 </main>
 <script>
-const $ = id => document.getElementById(id);
-const canvas = $('poster'), ctx = canvas.getContext('2d');
+const $=id=>document.getElementById(id);
+const canvas=$('poster'),ctx=canvas.getContext('2d');
 const W=1080,H=1350;
 const defaults={studentName:'মোঃ আব্দুল আহাদ',fatherName:'মোঃ মাসুদ রানা',village:'মুন্সীগঞ্জড়া',thana:'ভোলাহাট',district:'চাঁপাইনবাবগঞ্জ',phone:'01762062310'};
 const images={student:null,logo:new Image(),building:new Image()};
 images.logo.src='madrasa-logo.png';
 images.building.src='madrasa-building.jpg';
-images.logo.onload=draw;
-images.building.onload=draw;
+images.logo.onload=draw;images.building.onload=draw;
 
-function rounded(x,y,w,h,r,fill,stroke=null,lw=1){
-  ctx.beginPath();ctx.roundRect(x,y,w,h,r);if(fill){ctx.fillStyle=fill;ctx.fill()}if(stroke){ctx.lineWidth=lw;ctx.strokeStyle=stroke;ctx.stroke()}
+function rr(x,y,w,h,r,fill,stroke=null,lw=1){
+  ctx.beginPath();ctx.roundRect(x,y,w,h,r);
+  if(fill){ctx.fillStyle=fill;ctx.fill()}
+  if(stroke){ctx.lineWidth=lw;ctx.strokeStyle=stroke;ctx.stroke()}
 }
-function fitImage(img,x,y,w,h){
-  if(!img)return;
-  const ir=img.width/img.height, box=w/h;let sx=0,sy=0,sw=img.width,sh=img.height;
-  if(ir>box){sw=img.height*box;sx=(img.width-sw)/2}else{sh=img.width/box;sy=(img.height-sh)/2}
-  ctx.save();ctx.beginPath();ctx.rect(x,y,w,h);ctx.clip();ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h);ctx.restore();
+function cover(img,x,y,w,h){
+  if(!img||!img.complete||!img.naturalWidth)return;
+  const scale=Math.max(w/img.width,h/img.height),sw=w/scale,sh=h/scale;
+  const sx=(img.width-sw)/2,sy=(img.height-sh)/2;
+  ctx.save();ctx.beginPath();ctx.roundRect(x,y,w,h,16);ctx.clip();
+  ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h);ctx.restore();
 }
-function containImage(img,x,y,w,h){
-  if(!img)return;const s=Math.min(w/img.width,h/img.height),iw=img.width*s,ih=img.height*s;
+function contain(img,x,y,w,h){
+  if(!img||!img.complete||!img.naturalWidth)return;
+  const s=Math.min(w/img.width,h/img.height),iw=img.width*s,ih=img.height*s;
   ctx.drawImage(img,x+(w-iw)/2,y+(h-ih)/2,iw,ih);
 }
-function text(str,x,y,size,color,weight=700,align='left'){
-  ctx.font=`${weight} ${size}px "Noto Sans Bengali",sans-serif`;ctx.fillStyle=color;ctx.textAlign=align;ctx.textBaseline='middle';ctx.fillText(str,x,y);
+function txt(str,x,y,size,color,weight=600,align='left',maxWidth=0){
+  ctx.save();ctx.textAlign=align;ctx.textBaseline='middle';ctx.fillStyle=color;
+  let fs=size;ctx.font=`${weight} ${fs}px "Noto Sans Bengali",sans-serif`;
+  if(maxWidth){while(ctx.measureText(String(str)).width>maxWidth&&fs>16){fs-=1;ctx.font=`${weight} ${fs}px "Noto Sans Bengali",sans-serif`}}
+  ctx.fillText(String(str),x,y);ctx.restore();
 }
 function draw(){
   ctx.clearRect(0,0,W,H);
-  // clean white canvas with restrained green accents
-  const bg=ctx.createLinearGradient(0,0,W,H);bg.addColorStop(0,'#ffffff');bg.addColorStop(1,'#f5faef');ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
-  ctx.fillStyle='#08732e';ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(285,0);ctx.lineTo(0,165);ctx.closePath();ctx.fill();
-  ctx.fillStyle='#8bc53f';ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(205,0);ctx.lineTo(0,115);ctx.closePath();ctx.fill();
-  // Fixed institution heading and address
-  text('মাদ্রাসা দারুস সুন্নাহ মিরপুর, ঢাকা।',540,64,43,'#07552a',800,'center');
-  text('⌖  বাসা: ৬২৮, রোড: ৩, ব্লক: খ, মিরপুর ১২, ঢাকা ১২১৬।',540,119,25,'#26352a',600,'center');
-  // top image area
-  rounded(55,164,340,250,22,'#f2f8ed','#dcebd8',3);
-  if(images.logo) containImage(images.logo,75,180,300,220);
-  else {text('মাদ্রাসার',225,270,34,'#0b6732',700,'center');text('লোগো',225,315,34,'#0b6732',700,'center')}
-  rounded(420,164,605,250,22,'#e9f1e9','#dcebd8',3);
-  if(images.building) fitImage(images.building,430,174,585,230);
-  else {text('মাদ্রাসার ভবনের ছবি',722,286,31,'#53735a',600,'center')}
-  // batch banner
-  const grad=ctx.createLinearGradient(0,430,0,585);grad.addColorStop(0,'#087234');grad.addColorStop(1,'#034b25');
-  rounded(65,438,950,145,42,grad,'#8bbd45',5);
-  text('১১ তম বিদায়ী ব্যাচ',540,510,77,'#ffffff',800,'center');
-  text('দাওরায়ে হাদিস (মাস্টার্স) ২০২৬ ইং',540,624,36,'#07552a',700,'center');
-  // student portrait
-  rounded(55,690,450,535,30,'#ffffff','#075c2b',8);
-  if(images.student) fitImage(images.student,72,707,416,501);
-  else {rounded(72,707,416,501,18,'#e9f2eb');text('শিক্ষার্থীর ছবি',280,957,34,'#5b7861',600,'center')}
-  // details panel
-  rounded(545,690,480,535,28,'#f5faef','#d5e7d0',3);
-  rounded(575,712,420,82,25,'#087234');
-  text('পরিচিতি',785,753,43,'#ffffff',800,'center');
+  // Warm paper background and fine frame
+  const bg=ctx.createLinearGradient(0,0,W,H);bg.addColorStop(0,'#fffefa');bg.addColorStop(1,'#f6f8ef');
+  ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+  rr(18,18,1044,1314,24,null,'#d8c17a',3);
+  rr(27,27,1026,1316,20,null,'#dfe8d8',2);
+
+  // Fixed madrasa identity header
+  rr(48,43,190,184,18,'#ffffff','#dce7d8',2);
+  contain(images.logo,62,54,162,162);
+  rr(842,43,190,184,18,'#ffffff','#dce7d8',2);
+  cover(images.building,850,51,174,168);
+  txt('মাদ্রাসা দারুস সুন্নাহ',540,82,42,'#07572d',800,'center',580);
+  txt('মিরপুর, ঢাকা।',540,130,40,'#07572d',800,'center',580);
+  txt('বাসা: ৬২৮, রোড: ৩, ব্লক: খ, মিরপুর ১২, ঢাকা ১২১৬।',540,190,24,'#35483a',600,'center',590);
+  ctx.strokeStyle='#c8a94e';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(260,237);ctx.lineTo(820,237);ctx.stroke();
+  ctx.fillStyle='#c8a94e';ctx.beginPath();ctx.arc(540,237,5,0,Math.PI*2);ctx.fill();
+
+  // Main batch title
+  const titleGrad=ctx.createLinearGradient(0,270,0,420);titleGrad.addColorStop(0,'#0b7540');titleGrad.addColorStop(1,'#034a29');
+  rr(62,267,956,145,34,titleGrad,'#c9a64a',5);
+  txt('১১তম বিদায়ী ব্যাচ',540,340,76,'#fffdf5',800,'center',890);
+  txt('দাওরায়ে হাদিস (মাস্টার্স) ২০২৬ ইং',540,463,38,'#07572d',800,'center',880);
+  ctx.strokeStyle='#d6c27e';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(180,500);ctx.lineTo(900,500);ctx.stroke();
+
+  // Portrait and profile panel
+  rr(48,530,456,650,24,'#ffffff','#0a6336',6);
+  if(images.student)cover(images.student,62,544,428,622);
+  else {rr(62,544,428,622,15,'#edf3eb');txt('শিক্ষার্থীর ছবি',276,855,34,'#65806b',600,'center')}
+  rr(526,530,506,650,24,'#fffefa','#d7e4d2',3);
+  rr(552,551,454,76,20,'#075f33');
+  txt('পরিচিতি',779,589,42,'#ffffff',800,'center');
+
   const rows=[
-    ['নাম', $('studentName').value],
-    ['পিতা', $('fatherName').value],
-    ['গ্রাম', $('village').value],
-    ['থানা', $('thana').value],
-    ['জেলা', $('district').value]
+    ['নাম',$('studentName').value],
+    ['পিতা',$('fatherName').value],
+    ['গ্রাম',$('village').value],
+    ['থানা',$('thana').value],
+    ['জেলা',$('district').value]
   ];
-  let y=855;
-  rows.forEach((r,i)=>{
-    rounded(570,y-36,430,73,17,i%2===0?'#e4f1dc':'#f0f7eb');
-    ctx.fillStyle='#087234';ctx.beginPath();ctx.arc(612,y,26,0,Math.PI*2);ctx.fill();
-    const symbols=['●','✦','⌂','⌖','▤'];text(symbols[i],612,y,23,'#ffffff',700,'center');
-    text(r[0]+' :',660,y,26,'#17442a',700,'left');
-    text(r[1]||'—',775,y,26,'#17271c',600,'left');
-    y+=83;
+  const y0=674,rowH=72,gap=9;
+  rows.forEach((row,i)=>{
+    const y=y0+i*(rowH+gap);
+    rr(552,y,454,rowH,15,i%2===0?'#edf4e9':'#f7f8f2');
+    // restrained numbered marker
+    ctx.fillStyle='#0a6b3a';ctx.beginPath();ctx.arc(590,y+36,22,0,Math.PI*2);ctx.fill();
+    txt(String(i+1).padStart(2,'0'),590,y+36,17,'#ffffff',700,'center');
+    txt(row[0]+' :',630,y+36,25,'#31543b',700,'left',105);
+    txt(row[1]||'—',760,y+36,25,'#172d20',600,'left',225);
   });
-  rounded(570,1110,430,78,18,'#075b2b');
-  text('☎  '+($('phone').value||''),785,1149,32,'#ffffff',700,'center');
-  // footer wave and slogan
-  ctx.fillStyle='#08732e';ctx.beginPath();ctx.moveTo(0,1245);ctx.quadraticCurveTo(280,1190,540,1245);ctx.quadraticCurveTo(820,1300,1080,1235);ctx.lineTo(1080,1350);ctx.lineTo(0,1350);ctx.closePath();ctx.fill();
-  ctx.strokeStyle='#8bc53f';ctx.lineWidth=12;ctx.beginPath();ctx.moveTo(0,1248);ctx.quadraticCurveTo(280,1194,540,1248);ctx.quadraticCurveTo(820,1300,1080,1238);ctx.stroke();
-  text('জ্ঞান হোক জীবনের আলো,',540,1290,34,'#ffffff',700,'center');
-  text('আখিরাত হোক লক্ষ্য।',540,1330,32,'#ffffff',600,'center');
+  rr(552,1085,454,70,16,'#07572d');
+  txt('☎',590,1120,29,'#ffffff',700,'center');
+  txt($('phone').value||'মোবাইল নম্বর',625,1120,29,'#ffffff',700,'left',350);
+
+  // Minimal footer
+  ctx.fillStyle='#064b29';ctx.beginPath();ctx.moveTo(0,1220);ctx.quadraticCurveTo(260,1185,540,1220);ctx.quadraticCurveTo(820,1255,1080,1215);ctx.lineTo(1080,1350);ctx.lineTo(0,1350);ctx.closePath();ctx.fill();
+  ctx.strokeStyle='#9ac64b';ctx.lineWidth=9;ctx.beginPath();ctx.moveTo(0,1220);ctx.quadraticCurveTo(260,1185,540,1220);ctx.quadraticCurveTo(820,1255,1080,1215);ctx.stroke();
+  txt('জ্ঞান হোক জীবনের আলো,',540,1280,34,'#ffffff',700,'center',800);
+  txt('আখিরাত হোক লক্ষ্য।',540,1322,31,'#f4df9b',600,'center',800);
 }
-function loadFile(input,key){
+function loadStudent(input){
   input.addEventListener('change',e=>{
-    const f=e.target.files&&e.target.files[0];if(!f)return;
-    const url=URL.createObjectURL(f),img=new Image();
-    img.onload=()=>{images[key]=img;draw();URL.revokeObjectURL(url)};
+    const file=e.target.files&&e.target.files[0];if(!file)return;
+    const url=URL.createObjectURL(file),img=new Image();
+    img.onload=()=>{images.student=img;draw();URL.revokeObjectURL(url)};
+    img.onerror=()=>{URL.revokeObjectURL(url);alert('ছবিটি খোলা যাচ্ছে না। অন্য ছবি দিন।')};
     img.src=url;
   });
 }
-loadFile($('studentPhoto'),'student');
+loadStudent($('studentPhoto'));
 ['studentName','fatherName','village','thana','district','phone'].forEach(id=>$(id).addEventListener('input',draw));
 $('downloadBtn').addEventListener('click',async()=>{
-  if(document.fonts&&document.fonts.ready) await document.fonts.ready;
+  if(document.fonts&&document.fonts.ready)await document.fonts.ready;
   draw();
   const a=document.createElement('a');a.download='madrasa-farewell-poster.png';a.href=canvas.toDataURL('image/png');a.click();
 });
 $('resetBtn').addEventListener('click',()=>{
   Object.entries(defaults).forEach(([k,v])=>$(k).value=v);
-  $('studentPhoto').value='';
-  images.student=null;draw();
+  $('studentPhoto').value='';images.student=null;draw();
 });
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(draw);else draw();
 </script>
