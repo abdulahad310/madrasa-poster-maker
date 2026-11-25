@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#064b2c">
+<title>Madrasa Poster Maker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--green:#07512f;--deep:#043820;--gold:#e9c94e;--cream:#fff8df;--ink:#173b2a}
+*{box-sizing:border-box}
+body{margin:0;background:#f2f5f0;color:#17231c;font-family:"Noto Sans Bengali",sans-serif}
+header{background:linear-gradient(115deg,#043820,#087342);color:#fff;padding:24px 16px 28px;text-align:center;border-bottom:5px solid #d9b83f}
+header h1{font-size:clamp(23px,4vw,34px);margin:0 0 5px;font-weight:900}
+header p{margin:0;color:#e8f3e9;font-size:14px}
+main{max-width:1180px;margin:24px auto;padding:0 16px;display:grid;grid-template-columns:minmax(280px,390px) minmax(0,1fr);gap:22px;align-items:start}
+.panel{background:#fff;border:1px solid #dce5dc;border-radius:16px;padding:20px;box-shadow:0 5px 22px #173b2a0d}
+.panel h2{font-size:19px;margin:0 0 16px;color:#07512f}
+.field{margin:0 0 13px}
+label{display:block;font-size:13px;font-weight:700;margin-bottom:6px;color:#34483a}
+input,select{width:100%;border:1px solid #cbd8cc;border-radius:9px;padding:11px 12px;font:inherit;font-size:14px;background:#fff;color:#17231c;outline:none}
+input:focus{border-color:#0b8750;box-shadow:0 0 0 3px #0b875018}
+input[type=file]{padding:9px;font-size:12px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.hint{font-size:11px;color:#6b786d;line-height:1.6;margin:6px 0 0}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:17px}
+button{border:0;border-radius:10px;padding:12px 16px;font:700 14px "Noto Sans Bengali",sans-serif;cursor:pointer}
+.primary{background:#087442;color:#fff;flex:1}
+.secondary{background:#edf4ee;color:#165536}
+button:disabled{opacity:.5;cursor:not-allowed}
+.preview-panel{padding:16px}
+.preview-head{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:12px}
+.preview-head h2{margin:0;font-size:18px;color:#07512f}
+.tag{font-size:11px;background:#e8f5eb;color:#17613b;border-radius:30px;padding:5px 9px;white-space:nowrap}
+.canvas-wrap{background:#e8eee8;border-radius:12px;padding:10px;display:flex;justify-content:center;overflow:hidden}
+canvas{width:100%;height:auto;max-width:620px;display:block;box-shadow:0 4px 18px #173b2a20}
+.status{font-size:12px;color:#647368;margin:10px 2px 0;min-height:20px}
+footer{text-align:center;color:#6b786d;font-size:12px;padding:5px 16px 25px}
+@media(max-width:850px){main{grid-template-columns:1fr;max-width:680px}.preview-panel{order:2}.panel{order:1}}
+@media(max-width:480px){main{padding:0 10px;margin:14px auto;gap:14px}.panel{padding:15px}.two{gap:8px}.canvas-wrap{padding:5px}}
+</style>
+</head>
+<body>
+<header>
+  <h1>মাদরাসা পোস্টার মেকার</h1>
+  <p>তথ্য ও ছবি দিন, নিজের বিদায়ী ছাত্র পোস্টার তৈরি করুন</p>
+</header>
+
+<main>
+  <section class="panel">
+    <h2>ছাত্রের তথ্য পূরণ করুন</h2>
+    <form id="posterForm">
+      <div class="field"><label for="madrasa">মাদ্রাসার নাম</label><input id="madrasa" value="কদমভাঙ্গা ইসলামিয়াহ আরাবিয়্যাহ সালাফিয়্যাহ মাদরাসা" maxlength="90"></div>
+      <div class="field"><label for="location">মাদ্রাসার ঠিকানা</label><input id="location" value="গোয়ালা, সাপাহার, নওগাঁ" maxlength="65"></div>
+      <div class="field"><label for="batch">ব্যাচের নাম</label><input id="batch" value="৪২তম বিদায়ী ব্যাচ" maxlength="40"></div>
+      <div class="two">
+        <div class="field"><label for="course">কোর্স</label><input id="course" value="দাওরায়ে হাদিস (মাস্টার্স)" maxlength="45"></div>
+        <div class="field"><label for="year">শিক্ষাবর্ষ</label><input id="year" value="২০২৬ ইং" maxlength="20"></div>
+      </div>
+      <hr style="border:0;border-top:1px solid #e7eee7;margin:7px 0 15px">
+      <div class="field"><label for="student">ছাত্রের নাম</label><input id="student" value="আঃ রহিম" maxlength="35"></div>
+      <div class="field"><label for="father">পিতার নাম</label><input id="father" value="আব্দুস সালাম" maxlength="40"></div>
+      <div class="field"><label for="village">গ্রাম</label><input id="village" value="প্রয়াগপুর" maxlength="35"></div>
+      <div class="two">
+        <div class="field"><label for="thana">থানা</label><input id="thana" value="রাণীশংকৈল" maxlength="35"></div>
+        <div class="field"><label for="district">জেলা</label><input id="district" value="ঠাকুরগাঁও" maxlength="35"></div>
+      </div>
+      <div class="field"><label for="mobile">মোবাইল নম্বর</label><input id="mobile" value="017XXXXXXXX" maxlength="20" inputmode="tel"></div>
+      <div class="field">
+        <label for="photo">ছাত্রের ছবি আপলোড</label>
+        <input id="photo" type="file" accept="image/jpeg,image/png,image/webp">
+        <p class="hint">JPG, PNG অথবা WebP। সর্বোচ্চ ৫ MB। পরিষ্কার, সামনের দিকের পোর্ট্রেট ছবি ব্যবহার করুন।</p>
+      </div>
+      <div class="actions">
+        <button class="primary" type="button" id="downloadBtn">PNG পোস্টার ডাউনলোড</button>
+        <button class="secondary" type="reset" id="resetBtn">রিসেট</button>
+      </div>
+      <p class="hint">আপনার ছবি এই ব্রাউজারেই প্রসেস হয়। এই ডেমো কোনো সার্ভারে ছবি আপলোড করে না।</p>
+    </form>
+  </section>
+
+  <section class="panel preview-panel">
+    <div class="preview-head"><h2>পোস্টারের প্রিভিউ</h2><span class="tag">Facebook 4:5</span></div>
+    <div class="canvas-wrap"><canvas id="poster" width="1080" height="1350" aria-label="তৈরি হওয়া পোস্টারের প্রিভিউ"></canvas></div>
+    <p class="status" id="status" aria-live="polite">ফরমের তথ্য পরিবর্তন করলে প্রিভিউ আপডেট হবে।</p>
+  </section>
+</main>
+<footer>মাদরাসা পোস্টার মেকার · বিনামূল্যের ব্রাউজার-ভিত্তিক টুল</footer>
+
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const canvas = $('poster');
+  const ctx = canvas.getContext('2d');
+  let studentPhoto = null;
+  let photoObjectUrl = null;
+  const fields = ['madrasa','location','batch','course','year','student','father','village','thana','district','mobile'];
+
+  function value(id){ return ($(id).value || '').trim(); }
+  function roundedRect(x,y,w,h,r,fill,stroke,line=1){
+    ctx.beginPath(); ctx.roundRect(x,y,w,h,r);
+    if(fill){ctx.fillStyle=fill;ctx.fill();}
+    if(stroke){ctx.lineWidth=line;ctx.strokeStyle=stroke;ctx.stroke();}
+  }
+  function fitText(text,x,y,maxWidth,fontSize,minSize=22,weight=700,color='#fff',align='center'){
+    let size=fontSize;
+    do { ctx.font=`${weight} ${size}px "Noto Sans Bengali", sans-serif`; if(ctx.measureText(text).width<=maxWidth) break; size-=2; } while(size>minSize);
+    ctx.fillStyle=color;ctx.textAlign=align;ctx.textBaseline='middle';ctx.fillText(text,x,y,maxWidth);
+  }
+  function leaf(x,y,s,rotation=0){
+    ctx.save();ctx.translate(x,y);ctx.rotate(rotation);
+    ctx.fillStyle='#e8d66b';
+    ctx.beginPath();ctx.ellipse(0,0,s*.55,s*.19,0,0,Math.PI*2);ctx.fill();
+    ctx.strokeStyle='#f4e9a4';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(-s*.7,0);ctx.lineTo(s*.7,0);ctx.stroke();
+    ctx.restore();
+  }
+  function drawMosque(){
+    ctx.save();ctx.fillStyle='#022f1d';
+    // central dome and crescent
+    ctx.beginPath();ctx.moveTo(440,170);ctx.bezierCurveTo(445,95,635,95,640,170);ctx.closePath();ctx.fill();
+    ctx.fillRect(438,165,204,28);
+    ctx.beginPath();ctx.arc(540,85,27,Math.PI*.12,Math.PI*1.88);ctx.lineTo(540,58);ctx.fill();
+    // side domes
+    [350,730].forEach(x=>{ctx.beginPath();ctx.moveTo(x-48,190);ctx.bezierCurveTo(x-43,130,x+43,130,x+48,190);ctx.closePath();ctx.fill();ctx.fillRect(x-50,185,100,18);});
+    // minarets
+    [270,810].forEach(x=>{ctx.fillRect(x-12,80,24,112);ctx.fillRect(x-20,110,40,10);ctx.beginPath();ctx.moveTo(x-17,80);ctx.lineTo(x,48);ctx.lineTo(x+17,80);ctx.closePath();ctx.fill();ctx.fillRect(x-17,145,34,8);});
+    ctx.restore();
+  }
+  function drawPhoto(x,y,w,h){
+    ctx.save();
+    roundedRect(x-15,y-15,w+30,h+30,34,'#e7c84f','#fff2a8',9);
+    roundedRect(x,y,w,h,22,'#174cba','#f7df72',5);
+    ctx.save();ctx.beginPath();ctx.roundRect(x+8,y+8,w-16,h-16,16);ctx.clip();
+    if(studentPhoto){
+      const iw=studentPhoto.width, ih=studentPhoto.height, target=w-16, targetH=h-16;
+      const scale=Math.max(target/iw,targetH/ih), sw=target/scale, sh=targetH/scale;
+      const sx=(iw-sw)/2, sy=(ih-sh)/2;
+      ctx.drawImage(studentPhoto,sx,sy,sw,sh,x+8,y+8,target,targetH);
+    } else {
+      const g=ctx.createLinearGradient(x,y,x+w,y+h);g.addColorStop(0,'#2869d6');g.addColorStop(1,'#092d91');
+      ctx.fillStyle=g;ctx.fillRect(x,y,w,h);
+      ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(x+w/2,y+h*.36,72,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.ellipse(x+w/2,y+h*.86,150,180,0,Math.PI,Math.PI*2);ctx.fill();
+      fitText('ছাত্রের ছবি',x+w/2,y+h*.93,w-30,25,20,700,'#fff');
+    }
+    ctx.restore();ctx.restore();
+  }
+  function drawInfoCard(){
+    const x=590,y=665,w=430,h=610;
+    roundedRect(x,y,w,h,38,'#fff9e5','#e8c94f',12);
+    roundedRect(x+17,y+18,w-34,72,28,'#07512f','#e8c94f',5);
+    fitText('পরিচিতি',x+w/2,y+55,w-70,49,34,900,'#fff');
+    const rows=[
+      ['নাম',value('student')],
+      ['পিতা',value('father')],
+      ['গ্রাম',value('village')],
+      ['থানা',value('thana')],
+      ['জেলা',value('district')]
+    ];
+    let yy=y+142;
+    rows.forEach((r,i)=>{
+      ctx.fillStyle='#07512f';ctx.beginPath();ctx.arc(x+55,yy,27,0,Math.PI*2);ctx.fill();
+      ctx.fillStyle='#fff';ctx.font='700 27px "Noto Sans Bengali", sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
+      ctx.fillText(['●','✦','⌂','⌖','▤'][i],x+55,yy+1);
+      fitText(r[0]+' :',x+100,yy,95,28,22,700,'#143c28','left');
+      fitText(r[1]||'—',x+205,yy,205,29,27,700,'#173b2a','left');
+      ctx.strokeStyle='#aab69f';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(x+100,yy+42);ctx.lineTo(x+w-28,yy+42);ctx.stroke();
+      yy+=88;
+    });
+    roundedRect(x+18,y+520,w-36,70,25,'#07512f','#e8c94f',5);
+    fitText('☎  '+(value('mobile')||'মোবাইল নম্বর'),x+w/2,y+555,w-65,31,23,800,'#fff');
+  }
+  function draw(){
+    const W=canvas.width,H=canvas.height;
+    ctx.clearRect(0,0,W,H);
+    const bg=ctx.createLinearGradient(0,0,W,H);bg.addColorStop(0,'#08713f');bg.addColorStop(.52,'#06472c');bg.addColorStop(1,'#032e1c');
+    ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+    // subtle geometric pattern
+    ctx.save();ctx.globalAlpha=.11;ctx.strokeStyle='#c6d58a';ctx.lineWidth=2;
+    for(let x=20;x<W;x+=72){for(let y=20;y<H;y+=72){ctx.beginPath();ctx.arc(x,y,19,0,Math.PI*2);ctx.stroke();ctx.beginPath();ctx.moveTo(x-14,y);ctx.lineTo(x+14,y);ctx.moveTo(x,y-14);ctx.lineTo(x,y+14);ctx.stroke();}}
+    ctx.restore();
+    // outer frame
+    roundedRect(18,18,W-36,H-36,42,null,'#e9cd54',12);
+    roundedRect(34,34,W-68,H-68,34,null,'#f8e9a1',3);
+    // header
+    roundedRect(55,48,970,270,52,'#034126','#e8ca4e',13);
+    drawMosque();
+    fitText(value('madrasa'),540,225,875,58,36,900,'#fff');
+    fitText(value('location'),540,278,800,37,27,800,'#f3dc73');
+    // batch title ribbon
+    ctx.save();ctx.beginPath();ctx.moveTo(80,365);ctx.quadraticCurveTo(540,315,1000,365);ctx.lineTo(970,495);ctx.quadraticCurveTo(540,540,110,495);ctx.closePath();ctx.fillStyle='#0b7544';ctx.fill();ctx.lineWidth=7;ctx.strokeStyle='#e8ca4e';ctx.stroke();ctx.restore();
+    fitText(value('batch'),540,433,850,91,52,900,'#ffe45c');
+    // course ribbon
+    ctx.save();ctx.beginPath();ctx.moveTo(95,525);ctx.lineTo(985,525);ctx.lineTo(950,620);ctx.quadraticCurveTo(540,660,130,620);ctx.closePath();ctx.fillStyle='#fff7dc';ctx.fill();ctx.lineWidth=6;ctx.strokeStyle='#e6c64a';ctx.stroke();ctx.restore();
+    fitText(value('course')+'  '+value('year'),540,575,820,43,28,900,'#17432b');
+    // lower panels
+    drawPhoto(65,700,475,565);
+    drawInfoCard();
+    // bottom gold accent and books motif
+    ctx.fillStyle='#e6c94f';ctx.fillRect(45,1290,990,5);
+    leaf(95,1310,55,.25);leaf(985,1310,55,Math.PI-.25);
+    fitText('আল্লাহ আপনার ইলমে বরকত দান করুন',540,1315,850,25,18,700,'#f7e7a0');
+  }
+
+  async function readyFont(){
+    try { await document.fonts.load('700 32px "Noto Sans Bengali"'); await document.fonts.ready; } catch(e){}
+  }
+  function update(){draw();}
+  fields.forEach(id=>$(id).addEventListener('input',update));
+  $('photo').addEventListener('change',e=>{
+    const file=e.target.files && e.target.files[0];
+    if(!file)return;
+    if(!/^image\/(jpeg|png|webp)$/.test(file.type)){ $('status').textContent='JPG, PNG অথবা WebP ছবি নির্বাচন করুন।';e.target.value='';return; }
+    if(file.size>5*1024*1024){ $('status').textContent='ছবির সাইজ ৫ MB-এর কম হতে হবে।';e.target.value='';return; }
+    const reader=new FileReader();
+    reader.onload=ev=>{
+      const img=new Image();
+      img.onload=()=>{studentPhoto=img;update();$('status').textContent='ছবি যুক্ত হয়েছে। এখন PNG ডাউনলোড করতে পারবেন।';};
+      img.onerror=()=>{$('status').textContent='ছবিটি পড়া যায়নি। অন্য ছবি চেষ্টা করুন।';};
+      img.src=ev.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
+  $('downloadBtn').addEventListener('click',async()=>{
+    $('downloadBtn').disabled=true;
+    $('status').textContent='পোস্টার তৈরি হচ্ছে...';
+    await readyFont();draw();
+    canvas.toBlob(blob=>{
+      $('downloadBtn').disabled=false;
+      if(!blob){$('status').textContent='ডাউনলোড তৈরি করা যায়নি। আবার চেষ্টা করুন।';return;}
+      const url=URL.createObjectURL(blob);
+      const a=document.createElement('a');
+      const safe=(value('student')||'student').replace(/[^\p{L}\p{N}-]+/gu,'-').slice(0,35);
+      a.href=url;a.download=`madrasa-poster-${safe}.png`;
+      document.body.appendChild(a);a.click();a.remove();
+      setTimeout(()=>URL.revokeObjectURL(url),1500);
+      $('status').textContent='পোস্টার PNG হিসেবে ডাউনলোড হয়েছে।';
+    },'image/png');
+  });
+  $('posterForm').addEventListener('reset',()=>{
+    setTimeout(()=>{studentPhoto=null;$('photo').value='';draw();$('status').textContent='ফরম রিসেট করা হয়েছে।';},0);
+  });
+  readyFont().then(draw);
+  draw();
+})();
+</script>
+</body>
+</html>
